@@ -1,23 +1,22 @@
 # Money Forward Cloud Codex Plugin
 
-Codex plugin and skills for using Money Forward Cloud Accounting MCP servers.
+マネーフォワード クラウド会計の公式MCPをCodexで使うための、非公式ローカルプラグインです。
 
-This repository contains:
+このリポジトリには以下が含まれます。
 
-- `.codex-plugin/plugin.json`: Codex plugin metadata
-- `.mcp.json`: Money Forward Cloud MCP server definitions for alpha and beta endpoints
-- `skills/unofficial-official-mf-mcp-skill`: Skill directory for `unofficial-official-mf-mcp-skill`, an operational guide for the official Money Forward Cloud Accounting MCP
-- `skills/mfc-journal-analyst`: Journal analysis workflow and helper scripts
+- `.codex-plugin/plugin.json`: Codexプラグインのメタデータ
+- `.mcp.json`: Money Forward Cloud MCP の alpha / beta エンドポイント定義
+- `skills/unofficial-official-mf-mcp-skill`: 公式MCPの使い方・クセをCodexに教えるスキル
+- `skills/mfc-journal-analyst`: 仕訳分析・引き継ぎ資料作成用スキル
 
-## Plugin vs Skills
+## プラグインとスキルの関係
 
-This repository includes both:
+このリポジトリは、**プラグイン**と**スキル**を両方含んでいます。
 
-- **Plugin**: registers the Money Forward Cloud MCP servers in Codex.
-- **Skills**: teach Codex how to use those MCP tools safely and how to analyze journal data.
+- **プラグイン**: CodexにMoney Forward Cloud MCPサーバーを登録する
+- **スキル**: CodexにMCPツールの安全な使い方や仕訳分析手順を教える
 
-If you install the full plugin, the skills under `skills/` are included through
-`.codex-plugin/plugin.json`:
+フルプラグインをインストールすると、`skills/` 配下のスキルも一緒に読み込まれます。
 
 ```json
 {
@@ -26,62 +25,61 @@ If you install the full plugin, the skills under `skills/` are included through
 }
 ```
 
-So in normal use, install the plugin once. You do not need to install the skills
-separately.
+通常は、**このプラグインを1回インストールすればOK**です。スキルを別途インストールする必要はありません。
 
-The included skills are:
+同梱スキル:
 
-- `unofficial-official-mf-mcp-skill` (`skills/unofficial-official-mf-mcp-skill`): Money Forward Cloud Accounting MCP usage guide.
-- `mfc-journal-analyst`: Journal analysis and handover-document workflow.
+- `unofficial-official-mf-mcp-skill`: マネーフォワード クラウド会計 公式MCPの操作ガイド
+- `mfc-journal-analyst`: 仕訳データの分析・引き継ぎ資料作成ワークフロー
 
-## Install and Usage
+## インストール方法
 
-This repository is a Codex plugin directory. Use the whole repository, not only
-one skill file.
+このリポジトリ全体がCodexプラグインです。`SKILL.md` だけではなく、フォルダ全体を使ってください。
 
-### Easiest: ask Codex to place the plugin
+### いちばん簡単な方法
 
-After cloning or downloading this repository, open Codex and ask:
+このリポジトリをclone、またはGitHubからZIPでダウンロードして展開します。
+
+その後、Codexアプリで次のように頼みます。
 
 ```text
 このフォルダをCodexアプリのローカルプラグインとして配置して。
 ```
 
-For example:
+例:
 
 ```text
 /path/to/moneyforward-cloud-codex をCodexアプリのローカルプラグインとして配置して。
 ```
 
-Then install it from the Codex app:
+配置できたら、Codexアプリ側で有効化します。
 
-1. Open the sidebar item **Plugins**.
-2. Change the plugin source dropdown from **Built by OpenAI** to **Local Plugins**.
-3. Find **Money Forward Cloud MCP**.
-4. Click the plugin to install or enable it.
+1. サイドメニューの **Plugins** を開く
+2. 上部のプラグイン種別を **Local Plugins** に切り替える
+3. **Money Forward Cloud MCP** を探す
+4. クリックしてインストール、または有効化する
 
-When a checkmark appears next to the plugin, installation is complete.
+チェックマークが表示されれば完了です。
 
-### Get the plugin files
+### ファイルを取得する
 
-Clone the repository:
+cloneする場合:
 
 ```bash
 git clone https://github.com/kentaroajisaka/moneyforward-cloud-codex.git
 ```
 
-Or download the GitHub ZIP and unzip it first. The extracted folder is the
-plugin directory.
+ZIPでダウンロードする場合は、先に展開してください。展開後のフォルダ全体がプラグインです。
 
-### Manual local placement
+### 手動で配置する場合
 
-For manual local development, the directory layout Codex uses for local plugins is:
+Codexのローカルプラグインは、次のような場所に配置されます。
 
 ```text
 ~/.codex/plugins/cache/local/moneyforward-cloud-mcp/0.1.1/
 ```
 
-The plugin root must contain:
+プラグインのルートには、少なくとも次の3つが必要です。
 
 ```text
 .codex-plugin/plugin.json
@@ -89,50 +87,51 @@ The plugin root must contain:
 skills/
 ```
 
-Do not upload the ZIP to a normal Codex chat and expect it to install itself.
-Codex can inspect the files, and a local Codex agent can help place them in the
-local plugin directory, but the plugin becomes active only after it appears under
-**Local Plugins** and is installed or enabled.
+ZIPファイルを普通のCodexチャットに添付するだけでは、自動インストールされません。Codexは中身を読むことはできますが、プラグインとして有効にするには、ローカルプラグインとして配置したうえで **Local Plugins** からインストールまたは有効化してください。
 
-### Skill-only ZIP
+## スキル単体ZIPについて
 
-`skills/unofficial-official-mf-mcp-skill/build-zip.sh` creates a ZIP for the
-`unofficial-official-mf-mcp-skill` skill only. That ZIP does not include
-`.mcp.json`, so it does not register the Money Forward MCP servers by itself.
+`skills/unofficial-official-mf-mcp-skill/build-zip.sh` は、`unofficial-official-mf-mcp-skill` だけのZIPを作るためのスクリプトです。
 
-Use a skill-only ZIP only when you already have the MCP server configured
-elsewhere and want to install just the instructions.
+このZIPには `.mcp.json` が含まれないため、Money Forward MCPサーバー自体は登録されません。
 
-Use the full plugin repository when you want both:
+すでにMCPサーバー設定が済んでいて、説明書スキルだけ追加したい場合に使ってください。通常は、このリポジトリ全体をプラグインとしてインストールするのがおすすめです。
 
-- Money Forward Cloud MCP server definitions
-- Money Forward related Codex skills
+## 使い方
 
-The plugin exposes two MCP server names:
+インストール後、Codexに次のように依頼できます。
 
-- `mf-official-beta`: recommended for normal interactive use
-- `mf-official-alpha`: useful for headless flows or handling multiple offices in parallel
+```text
+Use Money Forward Cloud MCP beta.
+```
 
-After installation, ask Codex things like:
+```text
+MFクラウド会計の仕訳を取得して分析して
+```
 
-- `Use Money Forward Cloud MCP beta.`
-- `MFクラウド会計の仕訳を取得して分析して`
-- `マネーフォワードの試算表を見たい`
+```text
+マネーフォワードの試算表を見たい
+```
 
-## Privacy Notes
+利用できるMCPサーバー名:
 
-This repository is intended to contain only reusable plugin and skill instructions.
+- `mf-official-beta`: 通常はこちらを推奨
+- `mf-official-alpha`: ヘッドレス環境や複数事業者を同時に扱う場合に利用
 
-Do not commit:
+## 注意事項
+
+このリポジトリは、再利用可能なプラグイン定義とスキル説明だけを含める想定です。
+
+コミットしないもの:
 
 - `.mfc_token.json`
-- exported journal files such as `journals_FY*.json`
-- customer-specific accounting data
-- generated analysis reports containing client information
+- `journals_FY*.json` などの仕訳エクスポート
+- 顧客固有の会計データ
+- 顧客情報を含む分析レポート
 
-The included `.gitignore` excludes common local analysis artifacts.
+`.gitignore` で、よくあるローカル分析ファイルは除外しています。
 
-## Author
+## 作成者
 
 鯵坂健太郎（あじさか けんたろう）
 
@@ -140,6 +139,6 @@ The included `.gitignore` excludes common local analysis artifacts.
 - https://office-wing.net/
 - X: [@sabaaji0113](https://x.com/sabaaji0113)
 
-## License
+## ライセンス
 
 MIT License
