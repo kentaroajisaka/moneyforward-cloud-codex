@@ -6,7 +6,7 @@
 
 - `.codex-plugin/plugin.json`: Codexプラグインのメタデータ
 - `.mcp.json`: Money Forward Cloud MCP の alpha / beta エンドポイント定義
-- `skills/unofficial-official-mf-mcp-skill`: 公式MCPの使い方・クセをCodexに教えるスキル
+- `skills/unofficial-official-mf-mcp-skill`: 公式MCPの使い方・クセをCodexに教えるスキル（仕訳の取得・登録・更新、試算表取得など）
 - `skills/mfc-journal-analyst`: 仕訳分析・引き継ぎ資料作成用スキル
 
 ## プラグインとスキルの関係
@@ -29,7 +29,7 @@
 
 同梱スキル:
 
-- `unofficial-official-mf-mcp-skill`: マネーフォワード クラウド会計 公式MCPの操作ガイド
+- `unofficial-official-mf-mcp-skill`: マネーフォワード クラウド会計 公式MCPの操作ガイド（仕訳の取得・登録・更新、試算表取得など）
 - `mfc-journal-analyst`: 仕訳データの分析・引き継ぎ資料作成ワークフロー
 
 ## インストール方法
@@ -107,6 +107,14 @@ Use Money Forward Cloud MCP beta.
 
 ```text
 MFクラウド会計の仕訳を取得して分析して
+```
+
+```text
+MFクラウド会計にこの仕訳を登録して
+```
+
+```text
+MFクラウド会計の仕訳を更新したい
 ```
 
 ```text
