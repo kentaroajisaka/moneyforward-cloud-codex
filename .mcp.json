@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mf-official-beta": {
+      "type": "http",
+      "url": "https://beta.mcp.developers.biz.moneyforward.com/mcp/ca/v3"
+    },
+    "mf-official-alpha": {
+      "type": "http",
+      "url": "https://alpha.mcp.developers.biz.moneyforward.com/mcp/ca/v3"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.DS_Store
+*.zip
+*.log
+tmp/
+dist/
+data/
+**/.mfc_token.json
+**/journals_FY*.json
+**/.connected_accounts_manual.json
+**/.departments.json
+**/.accounts.json
+**/.taxes.json
+**/.trade_partners.json

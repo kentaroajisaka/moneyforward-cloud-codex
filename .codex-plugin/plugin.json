@@ -1,0 +1,33 @@
+{
+  "name": "moneyforward-cloud-mcp",
+  "version": "0.1.1",
+  "description": "Money Forward Cloud official remote MCP servers for alpha and beta environments.",
+  "author": {
+    "name": "Kentaro Ajisaka"
+  },
+  "license": "MIT",
+  "keywords": [
+    "moneyforward",
+    "mcp",
+    "accounting"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Money Forward Cloud MCP",
+    "shortDescription": "Alpha and beta remote MCP servers for Money Forward Cloud.",
+    "longDescription": "Adds the official Money Forward Cloud remote MCP endpoints used from Claude as Codex MCP servers: mf-official-alpha and mf-official-beta.",
+    "developerName": "Kentaro Ajisaka",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "MCP"
+    ],
+    "defaultPrompt": [
+      "Use Money Forward Cloud MCP beta.",
+      "Use Money Forward Cloud MCP alpha.",
+      "Check available Money Forward tools."
+    ],
+    "brandColor": "#00A4C7"
+  }
+}
